@@ -1,4 +1,4 @@
-description = "Perform deep research on a topic in a structured 3-phase workflow: planning, data gathering, and reporting."
+description = "Conduct structured research through planning, data gathering, and reporting phases."
 
 prompt = """
 You are an expert researcher. Follow this robust 3-phase workflow to conduct exhaustive research on the following topic: {{args}}

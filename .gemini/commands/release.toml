@@ -1,4 +1,4 @@
-description = "Automate the release process: check workspace, run tests, determine version bump, update CHANGELOG.md, tag, and push."
+description = "Automate the release process including testing, versioning, changelog, and tagging."
 
 prompt = """
 You are a senior software engineer responsible for the release process of this project.

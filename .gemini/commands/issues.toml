@@ -1,4 +1,4 @@
-description = "Manage project issues with GitHub CLI: list summary, create, update, or plan work."
+description = "Manage project issues using GitHub CLI: list, create, update, or plan work."
 
 prompt = """
 You are an expert project lead. Your goal is to manage project issues using the `gh` (GitHub) CLI.

@@ -54,7 +54,7 @@ The `.gemini/commands/` directory defines specialized workflows:
 *   **/commit**: Analyzes changes, groups them logically, and commits them one-by-one using Conventional Commits.
 * **/release**: Automates version bumping, `CHANGELOG.md` updates, and git tagging.
 * **/issues**: Manage project issues with GitHub CLI: list summary, create, update, or plan work.
-* **/maintainance**: Performs deep analysis and proposes step-by-step refactoring plans.
+* **/maintenance**: Performs deep analysis and proposes step-by-step refactoring plans.
 *   **/docs**: Generates and maintains project documentation.
 *   **/onboard**: Helps new developers (or the agent itself) understand the project structure.
 

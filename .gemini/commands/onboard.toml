@@ -1,4 +1,4 @@
-description = "Onboard a new developer to the project by summarizing the architecture, coding standards, and current state."
+description = "Summarize architecture, standards, and state to onboard a new developer."
 prompt = """
 You are a senior software engineer responsible for onboarding a new developer to this project.
 Your goal is to provide a clear, concise, and professional orientation that allows the newcomer to understand the codebase and start contributing effectively.

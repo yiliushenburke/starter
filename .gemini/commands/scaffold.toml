@@ -1,4 +1,4 @@
-description = "Scaffold a new project using modern standard practices and tooling (e.g., Python/uv, JS/npm, Rust, Go, C#)."
+description = "Scaffold a new project using modern standard practices and tooling."
 
 prompt = """
 You are an expert system architect and project scaffolder. Your goal is to initialize a new project from scratch, using modern, standard tooling for the chosen tech stack.

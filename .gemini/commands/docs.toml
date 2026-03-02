@@ -1,4 +1,4 @@
-description = "Analyze the codebase and update/generate project documentation in the docs/ folder."
+description = "Analyze codebase to update or generate project documentation in the docs folder."
 prompt = """
 You are a senior technical writer and software engineer. Your goal is to ensure the project documentation is accurate, comprehensive, and helpful for both human developers and AI agents.
 

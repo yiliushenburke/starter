@@ -1,4 +1,4 @@
-description = "Analyze uncommitted changes, group them by feature, and commit them individually using Conventional Commits."
+description = "Group and commit uncommitted changes individually using Conventional Commits."
 
 prompt = """
 Please analyze all current uncommitted changes (including untracked files).
