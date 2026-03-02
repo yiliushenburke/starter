@@ -23,48 +23,56 @@ In this framework, the AI agent is not just a "code generator" or a "copilot". I
 *   **📋 Research -> Plan -> Execute:** Every non-trivial change follows a strict lifecycle. The agent first researches context, proposes a detailed plan, waits for your explicit approval, and only then begins implementation.
 *   **✅ Validation-Always:** The framework uses `make` as a source of truth. The agent is hooked into the `makefile` to ensure every change is validated (linted and tested) before being finalized.
 
-## 🛠️ Powerful Commands
+---
 
-The `.gemini/commands/` directory defines specialized workflows that automate the entire development lifecycle:
+## 🛠️ The Project Lifecycle
 
-### 📁 Project Management & Discovery
-*   **`/plan`**: An interactive planning workflow that gathers context, analyzes the codebase, and generates a detailed execution plan saved in `plans/`. It also synchronizes with your `TASKS.md` and issues.
+The `.gemini/commands/` directory defines specialized workflows that automate every phase of the development lifecycle:
+
+### 🔍 Phase 1: Planning & Discovery
+*   **`/research <topic>`**: A deep, 3-phase investigation (Planning -> Data Gathering -> Reporting) that produces exhaustive Markdown reports in the `research/` directory. **Crucial for gathering technical requirements and state-of-the-art context.**
+*   **`/plan`**: The **Architectural Bridge**. This interactive workflow translates ideas into actionable execution plans:
+    *   **Phase 1 (Clarification):** The agent interviews you to resolve ambiguities before planning.
+    *   **Phase 2 (Agentic Analysis):** A specialized `planner` subagent scans the codebase and generates a detailed technical strategy.
+    *   **Phase 3 (Artifact Generation):** A persistent Markdown plan is saved in `plans/` (e.g., `plans/feature-x.md`).
+    *   **Phase 4 (Synchronization):** The plan is optionally linked to `TASKS.md` and can be synchronized with GitHub issues.
 *   **`/onboard`**: Summarizes the project's architecture, standards, and current state to quickly orient a new developer (or the agent itself).
+
+### 🏗️ Phase 2: Development & Execution
+*   **`/issues`**: Your gateway to GitHub integration. It allows you to list, create, or update issues. Use `/issues work <number>` to transition an issue directly into a detailed research and planning mode.
 *   **`/task`**: Manages the project roadmap in `TASKS.md`. Use it to `create` new tasks, `work` on existing ones (marks as In Progress), `report` on priorities, or `update` the roadmap.
-*   **`/issues`**: Integrates with the GitHub CLI (`gh`) to list, create, or update issues. It can transition from an issue directly into an implementation **Plan**.
+*   **`/scaffold`**: Initializes new project structures from scratch using modern, standard tooling (Python/uv, TS/npm, Rust/cargo, etc.) and sets up a compatible `makefile`.
 
-### 🏗️ Development & Maintenance
-*   **`/scaffold`**: Initializes a new project from scratch using modern, standard tooling (Python/uv, TS/npm, Rust/cargo, etc.) and sets up a compatible `makefile`.
-*   **`/research <topic>`**: A deep, 3-phase investigation workflow (Planning -> Data Gathering -> Reporting) that produces exhaustive Markdown reports in the `research/` directory.
-*   **`/maintenance`**: Performs a deep scan of the codebase to identify refactoring opportunities, improve documentation, and increase test coverage.
+### 🧹 Phase 3: Maintenance & Documentation
+*   **`/maintenance`**: Performs a deep scan of the codebase to identify technical debt, refactoring opportunities, and areas to improve test coverage.
 *   **`/docs`**: Analyzes the codebase and journals to generate or update comprehensive project documentation in the `docs/` folder.
-*   **`/cron`**: Manages repetitive background tasks (e.g., daily reports, health checks) using **systemd user timers**.
+*   **`/cron`**: Manages repetitive background tasks (e.g., health checks, automated reports) using **systemd user timers**.
 
-### 🚀 Shipping & Quality
-*   **`/commit`**: Analyzes changes, groups them into logical features or fixes, and guides you through committing them individually using **Conventional Commits**.
+### 🚀 Phase 4: Shipping & Quality
+*   **`/commit`**: Analyzes all uncommitted changes, groups them into logical features or fixes, and guides you through committing them individually using **Conventional Commits**.
 *   **`/release`**: Automates the final shipping steps: running tests, determining the next version (semver), updating the `CHANGELOG.md`, and tagging the release.
 
-## 🔄 Common Workflows
+---
+
+## 🔄 Standard Operating Procedures (SOPs)
 
 This framework shines when you combine these commands into cohesive workflows:
 
-### 1️⃣ Feature Lifecycle: From Idea to Ship
-1.  **Discovery:** `/research "best way to implement X"`
-2.  **Planning:** `/task create "Implement X based on research"`
-3.  **Implementation:** `/task work "Implement X"`
-4.  **Refining:** `/docs` to ensure documentation is up-to-date.
-5.  **Committing:** `/commit` to logically group and commit changes.
-6.  **Releasing:** `/release` to bump the version and tag the code.
+### 1️⃣ Feature Development Workflow
+1.  **Discover:** Run `/research` to understand the domain or library.
+2.  **Plan:** Use `/plan` to turn requirements into a technical roadmap in `plans/`.
+3.  **Track:** Link the plan to `TASKS.md` using `/plan`'s built-in sync.
+4.  **Implement:** Use `/task work` to mark progress and begin coding.
+5.  **Refine:** Run `/docs` to ensure your changes are well-documented.
+6.  **Ship:** Use `/commit` for clean history and `/release` for a new version tag.
 
-### 2️⃣ Routine Maintenance & Health
-1.  **Investigation:** `/maintenance` to identify technical debt.
-2.  **Automation:** `/cron "daily maintenance"` to run linting or small refactorings during off-hours.
-3.  **Reporting:** `/task report` to see pending roadmap items.
+### 2️⃣ Bug Resolution Workflow
+1.  **Triage:** Use `/issues summary` to see what needs attention.
+2.  **Reproduce:** Use `/issues work <id>` to research the root cause.
+3.  **Fix:** Develop the fix and validate with `make`.
+4.  **Sync:** Update the issue with the resolution details.
 
-### 3️⃣ Collaboration & Issue Tracking
-1.  **Triage:** `/issues summary` to see what needs attention.
-2.  **Deep Dive:** `/issues work 42` to research issue #42 and propose a fix.
-3.  **Onboarding:** New collaborators run `/onboard` to get up to speed in seconds.
+---
 
 ## ⚓ The Hook System: Staying in Sync
 
