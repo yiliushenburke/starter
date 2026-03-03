@@ -1,0 +1,19 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .claude/hooks/make.py"
+          },
+          {
+            "type": "command",
+            "command": "python3 .claude/hooks/journal.py"
+          }
+        ]
+      }
+    ]
+  }
+}
